@@ -28,7 +28,6 @@ class DBModule:
         cls.cursor.execute("SELECT make, year, country FROM cars WHERE color = ?", (color,))
         return cls.cursor.fetchall()
 
-    filename = 'cars.xlsx'
     @classmethod
     def export_to_excel(cls, filename):
         import openpyxl
@@ -48,15 +47,7 @@ class DBModule:
 
         workbook.save(filename)
 
-
-
-def clear_cars():
-    connection = sqlite3.connect("users.db")
-    cursor = connection.cursor()
-    cursor.execute("DELETE FROM cars")
-    connection.commit()
-    connection.close()
-
+DBModule.create_table()
 def db_data_check():
     conn = sqlite3.connect('users.db')
     cur = conn.cursor()
@@ -67,5 +58,4 @@ def db_data_check():
     conn.close()
 
 
-clear_cars()
 db_data_check()
