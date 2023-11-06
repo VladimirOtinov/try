@@ -17,7 +17,7 @@ class UserSelectionWindow(QMainWindow):
         layout = QVBoxLayout()
 
         self.db_module = DBModule()
-        self.excel_module = ExcelModule(self.db_module)
+        self.excel_module = ExcelModule()
 
         self.select_user1_button = QPushButton("Выбрать пользователя 1")
         self.select_user1_button.clicked.connect(self.select_user1)

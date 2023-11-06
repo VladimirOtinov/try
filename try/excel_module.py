@@ -1,20 +1,12 @@
-from PyQt6.QtWidgets import QFileDialog
+import xlsxwriter
 
 class ExcelModule:
-    def __init__(self, db_module):
-        self.db_module = db_module
+    def export_data_to_excel(self, filename, data):
+        workbook = xlsxwriter.Workbook(filename)
+        worksheet = workbook.add_worksheet("Cars")
 
-    def export_data_to_excel(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.Option.ReadOnly
+        for row, rowData in enumerate(data, start=1):
+            for col, value in enumerate(rowData):
+                worksheet.write(row, col, value)
 
-        filename, _ = QFileDialog.getSaveFileName(
-            None,
-            "Сохранить в Excel",
-            "",
-            "Excel Files (*.xlsx)",
-            options=options
-        )
-
-        if filename:
-            self.db_module.export_to_excel(filename)
+        workbook.close()

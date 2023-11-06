@@ -47,7 +47,6 @@ class DBModule:
 
         workbook.save(filename)
 
-DBModule.create_table()
 def db_data_check():
     conn = sqlite3.connect('users.db')
     cur = conn.cursor()
@@ -57,5 +56,13 @@ def db_data_check():
         print(data_one)
     conn.close()
 
+def clear_cars():
+    connection = sqlite3.connect("users.db")
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM cars")
+    connection.commit()
+    connection.close()
 
+
+DBModule.create_table()
 db_data_check()

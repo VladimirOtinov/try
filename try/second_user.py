@@ -23,14 +23,17 @@ class User_2(QDialog):
         self.table = QTableWidget()
 
         self.btn_download = QPushButton('Загрузить')
-
-        self.btn_unload = QPushButton('Выгрузить')
+        self.btn_sort_down = QPushButton('По убыванию')
+        self.btn_sort_up = QPushButton('По возростанию')
+        self.btn_unload = QPushButton('Отобразить данные в Excel')
 
         self.layout_all = QVBoxLayout()
         self.laouyt_btn = QHBoxLayout()
 
         self.laouyt_btn.addWidget(self.btn_download)
         self.laouyt_btn.addWidget(self.btn_unload)
+        self.laouyt_btn.addWidget(self.btn_sort_down)
+        self.laouyt_btn.addWidget(self.btn_sort_up)
 
         self.layout_all.addWidget(self.table)
         self.layout_all.addLayout(self.laouyt_btn)
